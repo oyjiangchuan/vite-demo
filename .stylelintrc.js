@@ -3,6 +3,7 @@ module.exports = {
   plugins: [],
   extends: ['stylelint-config-standard'],
   rules: {
+    'at-rule-no-unknown': [true, { ignoreAtRules: ['mixin', 'extend', 'content', 'include'] }],
     'media-feature-name-no-vendor-prefix': true,
     'at-rule-empty-line-before': 'never',
     'at-rule-name-case': 'lower',

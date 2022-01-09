@@ -22,6 +22,20 @@ export default defineConfig(({ mode }) => {
       //   additionalLegacyPolyfills: ['regenerator-runtime/runtime']
       // })
     ],
+    css: {
+      modules: {
+        scopeBehaviour: 'local',
+        localsConvention: 'camelCaseOnly'
+      },
+      preprocessorOptions: {
+        less: {
+          // modifyVars: {
+          // 	hack: `true; @import (reference) "@/styles/global/index.less";`,
+          // },import { supportBuild } from './parts';
+          javascriptEnabled: true
+        }
+      }
+    },
     build: {
       assetsDir: 'assetsDir',
       rollupOptions: {

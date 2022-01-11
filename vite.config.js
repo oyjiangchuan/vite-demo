@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { loadEnv, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import legacy from '@vitejs/plugin-legacy'
 import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
@@ -7,9 +7,19 @@ import { configPath, resolve, root, wrapperEnv } from './build/utils'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  // console.log('mode==', mode)
+  const isBuild = mode === 'production'
+
+  // 根据VITE命令设置NODE环境变量
+  process.env.NODE_ENV = mode
+
+  const env = loadEnv(mode, configPath)
+
+  const viteEnv = wrapperEnv(env)
   return {
+    base: viteEnv.VITE_PUBLIC_PATH,
+    root: root,
     envDir: configPath,
+    envPrefix: 'GLOBAL',
     resolve: {
       alias: {
         '@': resolve('./src')
@@ -43,8 +53,8 @@ export default defineConfig(({ mode }) => {
         output: {
           chunkFileNames: 'js/[name].[hash].js',
           entryFileNames: 'js/[name].[hash].js',
-          assetFileNames: assetFileNames,
-          manualChunks: manualChunks
+          manualChunks: manualChunks,
+          assetFileNames: assetFileNames
         }
       }
     }

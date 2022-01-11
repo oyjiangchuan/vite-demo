@@ -5,8 +5,8 @@ import { createApp } from 'vue'
 // import { setupComponent } from '@/component'
 // import { setupDirective } from '@/directive'
 import { isReady, setupRouter } from '@/router'
-import App from '@/page/app.vue'
-import '@/asset/style/index.less'
+import App from './page/app.vue'
+// import '@/asset/style/index.less'
 
 const app = createApp(App)
 
@@ -23,6 +23,6 @@ setupRouter(app)
 // setupStore(app)
 
 //  等待router
-isReady().then(() => {
-  app.mount('#app')
-})
+// isReady().then(() => {
+app.mount('#app')
+// })

@@ -1,8 +1,8 @@
 <template>
-  <!-- <config-provider>
-    <router-view />
-  </config-provider> -->
-  <div></div>
+  <!-- <config-provider> -->
+  <!-- <router-view /> -->
+  <div>哈哈哈</div>
+  <!-- </config-provider> -->
 </template>
 
 <script lang="ts" setup>

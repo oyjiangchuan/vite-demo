@@ -18,5 +18,5 @@ export function manualChunks(id, api) {
 
   if (!matchedRegex) return 'index'
 
-  return id.match(matchedRegex)?.[1] || 'index'
+  return id.match(matchedRegex)[1] || 'index'
 }
